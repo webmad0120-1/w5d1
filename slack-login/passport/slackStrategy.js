@@ -12,7 +12,7 @@ passport.use(
       User.findOne({
         slackID: profile.id
       })
-        .then((user) => {
+        .then(user => {
           if (user) {
             User.findByIdAndUpdate(
               user._id,
@@ -21,7 +21,7 @@ passport.use(
                 accessToken: accessToken
               },
               { new: true }
-            ).then((user) => {
+            ).then(user => {
               return done(null, user);
             });
           } else {
@@ -31,12 +31,12 @@ passport.use(
               accessToken: accessToken
             });
 
-            newUser.save().then((user) => {
+            newUser.save().then(user => {
               done(null, user);
             });
           }
         })
-        .catch((error) => {
+        .catch(error => {
           done(error);
         });
     }
