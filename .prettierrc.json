@@ -1,9 +1,8 @@
 {
-  "trailingComma": "none",
-  "tabWidth": 2,
-  "semi": true,
-  "singleQuote": false,
-  "printWidth": 120,
-  "quoteProps": "consistent",
-  "arrowParens": "always"
+    "trailingComma": "none",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": false,
+    "printWidth": 100,
+    "quoteProps": "consistent"
 }

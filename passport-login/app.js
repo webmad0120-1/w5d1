@@ -39,7 +39,7 @@ mongoose
   .then(() => {
     console.log("Connected to Mongo!");
   })
-  .catch((err) => {
+  .catch(err => {
     console.error("Error connecting to mongo", err);
   });
 
@@ -69,14 +69,15 @@ app.use(
 This is the basic setup for what happens when you try to login using passport
 
 if you had 3 form fields: username, password, & foo
-by using passReqToCallback: true as:
+by using {passReqToCallback: true} you now you can use req.body.foo. Example follows:
 
 passport.use(new LocalStrategy(
   {usernameField: 'email', passReqToCallback: true},
   function(req, email, password, done) {
-     -> now you can check req.body.foo
+     
   }
-)); */
+));
+*/
 
 passport.use(
   new LocalStrategy(
@@ -113,6 +114,7 @@ passport.use(
 );
 
 // as per https://stackoverflow.com/a/27637668/1175555
+// SAVES IN THE SESSION OBJECT THE USER ID SO YOU CAN KNOW WHO IS THE CURRENT USER
 // This gets called when we log in
 // The user id (you provide as the second argument of the done function) is saved in the session
 // and is later used to retrieve the whole object via the deserializeUser function.
@@ -127,7 +129,11 @@ passport.serializeUser((user, cb) => {
 });
 
 /*
-The first argument of deserializeUser corresponds to the key of the user object that was given to the done function. So your whole object is retrieved with help of that key. That key here is the user id (key can be any key of the user object i.e. name,email etc). In deserializeUser that key is matched with the in memory array / database or any data resource.
+// SAVES IN REQ.USER ALL THE USER'S INFO FOR YOUR USE
+The first argument of deserializeUser corresponds to the key of the user object that was given to the done function. 
+So your whole object is retrieved with help of that key. 
+That key here is the user id (key can be any key of the user object i.e. name,email etc). 
+In deserializeUser that key is matched with the in memory array / database or any data resource.
 The fetched object is attached to the request object as req.user
 
 passport.serializeUser(function(user, done) {
@@ -190,7 +196,7 @@ app.post("/signup", (req, res, next) => {
   User.findOne({
     username
   })
-    .then((user) => {
+    .then(user => {
       if (user !== null) {
         res.render("base", {
           message: "The username already exists",
@@ -207,7 +213,7 @@ app.post("/signup", (req, res, next) => {
         password: hashPass
       });
 
-      newUser.save((err) => {
+      newUser.save(err => {
         if (err) {
           res.render("base", {
             message: "Something went wrong",
@@ -218,7 +224,7 @@ app.post("/signup", (req, res, next) => {
         }
       });
     })
-    .catch((error) => {
+    .catch(error => {
       next(error);
     });
 });
