@@ -292,6 +292,10 @@ app.get("/private-page-admin", checkAdmin, (req, res) => {
 });
 
 app.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) => {
+  console.log(req.user.password);
+  console.log("req.session.passport***********");
+  console.log(req.session.passport);
+
   res.render("base", {
     user: req.user,
     section: "private"
@@ -301,6 +305,14 @@ app.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) => {
 app.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/login");
+});
+
+app.get("/remember", (req, res) => {
+  res.render("remember");
+});
+
+app.post("/remember-password", (req, res) => {
+  console.log(`find in mongo the user with email ${req.body.email}`);
 });
 
 app.listen(3000);
