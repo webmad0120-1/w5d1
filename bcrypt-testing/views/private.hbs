@@ -1,0 +1,31 @@
+{{#if isAdmin}}
+<nav>
+    <ul>
+        <li><a href="">Lorem, ipsum.</a></li>
+        <li><a href="">Consectetur, nihil.</a></li>
+        <li><a href="">Consequatur, quae.</a></li>
+        <li><a href="">Vitae, deserunt?</a></li>
+        <li><a href="">Voluptatibus, quidem!</a></li>
+    </ul>
+</nav>
+{{/if}}
+
+<a href="logout">Logout</a>
+<h1>Hello {{user.name}}, my salary is {{user.salary}}</h1>
+
+{{#if isAdmin}}
+<p>I am private and you are an admin</p>
+{{/if}}
+
+{{#if isEditor}}
+<p>I am private and you are editor</p>
+{{/if}}
+
+{{#if isGuest}}
+<p>I am private and you are a guest</p>
+{{/if}}
+
+<h3>Role= {{user.role}}</h3>
+
+{{user}}
+

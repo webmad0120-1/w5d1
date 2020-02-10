@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        nav {
+            margin-bottom: 30px;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Login form</h1>
+    <nav>
+        <a href="signup">Signup</a>
+    </nav>
+    <form action="/login" method="POST">
+        <input type="text" name="username" value="cesar345">
+        <input type="password" name="password" value="123">
+        {{#if error}}
+            <p class="error">{{error}}</p>
+        {{/if}}
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>
