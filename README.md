@@ -23,11 +23,6 @@
 - Using PassportJS to authenticate
 - Assign roles using PassportJS
 
-# Next - day w5d2
-
-- Google Maps
-- AJAX
-
 # Goals
 
 - Deep dive into PassportJS
