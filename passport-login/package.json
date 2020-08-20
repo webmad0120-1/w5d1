@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/ironhack-shared/test-passport-slack#readme",
   "dependencies": {
-    "bcrypt": "^3.0.2",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.18.3",
     "connect-ensure-login": "^0.1.1",
     "connect-flash": "^0.1.1",
